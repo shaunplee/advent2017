@@ -1,6 +1,6 @@
 module Maze where
 
-import qualified Data.Vector as V
+import qualified Data.Vector.Unboxed as V
 
 
 jumps :: [Int] -> Int
