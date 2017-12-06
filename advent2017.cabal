@@ -19,8 +19,7 @@ description:         Please see the README on Github at <https://github.com/gith
 
 library
   hs-source-dirs:      src
-  exposed-modules:     Lib
-                     , Checksum
+  exposed-modules:     Checksum
                      , Passphrases
                      , Maze
   build-depends:       base >= 4.7 && < 5
