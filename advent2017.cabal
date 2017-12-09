@@ -24,6 +24,7 @@ library
                      , Passphrases
                      , Registers
                      , Maze
+                     , Stream
   build-depends:       base >= 4.7 && < 5
                      , containers
                      , heap

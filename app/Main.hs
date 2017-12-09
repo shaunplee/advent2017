@@ -5,8 +5,9 @@ import           Circus
 import           Maze
 import           Passphrases
 import           Registers
+import           Stream
 
 main :: IO ()
 main = do
   content <- getContents
-  print $ runProgramMax content
+  print $ countGarbage content
