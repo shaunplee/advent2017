@@ -21,6 +21,7 @@ library
   hs-source-dirs:      src
   exposed-modules:     Checksum
                      , Circus
+                     , Hash
                      , Passphrases
                      , Registers
                      , Maze
