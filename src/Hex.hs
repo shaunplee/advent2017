@@ -80,9 +80,9 @@ maxDistance :: String -> Int
 maxDistance s = maximum (map snd res)
   where
     res =
-      foldl'
-        (\ps@((pos, m):_) dir ->
+      scanl'
+        (\(pos, m) dir ->
            let newPos = move pos dir
-           in (newPos, distanceToOrigin newPos) : ps)
-        [((0, 0, 0), 0)]
+           in (newPos, distanceToOrigin newPos))
+        ((0, 0, 0), 0)
         (parsePath s)
