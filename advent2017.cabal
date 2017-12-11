@@ -22,6 +22,7 @@ library
   exposed-modules:     Checksum
                      , Circus
                      , Hash
+                     , Hex
                      , Passphrases
                      , Registers
                      , Maze
