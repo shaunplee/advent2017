@@ -12,20 +12,21 @@ type Coord = (Int, Int, Int)
 move :: Coord -> Dir -> Coord
 move (x, y, z) N  = (x,     y + 1, z - 1)
 move (x, y, z) Ne = (x + 1, y,     z - 1)
-move (x, y, z) Nw = (x - 1, y + 1, z)
+move (x, y, z) Nw = (x - 1, y + 1, z    )
 move (x, y, z) S  = (x,     y - 1, z + 1)
-move (x, y, z) Se = (x + 1, y - 1, z)
+move (x, y, z) Se = (x + 1, y - 1, z    )
 move (x, y, z) Sw = (x - 1, y,     z + 1)
 
 distanceToOrigin :: Coord -> Int
 distanceToOrigin (0, 0, 0) = 0
 distanceToOrigin (x, y, z)
-  | (x >= y) && y >= z = 1 + distanceToOrigin (x - 1, y, z + 1)
-  | (z >= y) && y >= x = 1 + distanceToOrigin (x + 1, y, z - 1)
-  | (y >= x) && x >= z = 1 + distanceToOrigin (x, y - 1, z + 1)
-  | (z >= x) && x >= y = 1 + distanceToOrigin (x, y + 1, z - 1)
-  | (x >= z) && z >= y = 1 + distanceToOrigin (x - 1, y + 1, z)
-  | (y >= z) && z >= x = 1 + distanceToOrigin (x + 1, y - 1, z)
+  | (x >= z) && z >= y = 1 + distanceToOrigin (x - 1, y + 1, z    )
+  | (y >= z) && z >= x = 1 + distanceToOrigin (x + 1, y - 1, z    )
+  | (x >= y) && y >= z = 1 + distanceToOrigin (x - 1, y,     z + 1)
+  | (z >= y) && y >= x = 1 + distanceToOrigin (x + 1, y,     z - 1)
+  | (y >= x) && x >= z = 1 + distanceToOrigin (x,     y - 1, z + 1)
+  | (z >= x) && x >= y = 1 + distanceToOrigin (x,     y + 1, z - 1)
+
 
 parsePath :: String -> [Dir]
 parsePath s = case parseString pathParser mempty s of
@@ -36,42 +37,15 @@ pathParser :: Parser [Dir]
 pathParser = commaSep dirParser
 
 dirParser :: Parser Dir
-dirParser = try northwestParser
-  <|> try northeastParser
-  <|> try southeastParser
-  <|> try southwestParser
-  <|> try northParser
-  <|> try southParser
-
-northParser :: Parser Dir
-northParser = do
-  _ <- string "n"
-  return N
-
-northeastParser :: Parser Dir
-northeastParser = do
-  _ <- string "ne"
-  return Ne
-
-northwestParser :: Parser Dir
-northwestParser = do
-  _ <- string "nw"
-  return Nw
-
-southeastParser :: Parser Dir
-southeastParser = do
-  _ <- string "se"
-  return Se
-
-southParser :: Parser Dir
-southParser = do
-  _ <-string "s"
-  return S
-
-southwestParser :: Parser Dir
-southwestParser = do
-  _ <- string "sw"
-  return Sw
+dirParser = do
+  d <- some $ oneOf "news"
+  return $ case d of
+    "n"  -> N
+    "s"  -> S
+    "ne" -> Ne
+    "nw" -> Nw
+    "se" -> Se
+    "sw" -> Sw
 
 countSteps :: String -> Int
 countSteps s = distanceToOrigin $ foldl' move (0,0,0) (parsePath s)
