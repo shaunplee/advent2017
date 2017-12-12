@@ -24,6 +24,7 @@ library
                      , Hash
                      , Hex
                      , Passphrases
+                     , Pipes
                      , Registers
                      , Maze
                      , Stream

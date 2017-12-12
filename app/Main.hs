@@ -6,10 +6,11 @@ import           Hash
 import           Hex
 import           Maze
 import           Passphrases
+import           Pipes
 import           Registers
 import           Stream
 
 main :: IO ()
 main = do
   content <- getContents
-  print $ maxDistance content
+  print $ countGroups content
