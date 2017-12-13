@@ -8,9 +8,10 @@ import           Maze
 import           Passphrases
 import           Pipes
 import           Registers
+import           Scanners
 import           Stream
 
 main :: IO ()
 main = do
   content <- getContents
-  print $ countGroups content
+  print $ minDelay content
