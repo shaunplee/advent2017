@@ -2,19 +2,19 @@
 
 http://www.adventofcode.com
 
-I am Haskelling
-the problems
-that are in
+I am Haskelling  
+the problems  
+that are in  
 the advent
 
-and which
-you were apparently
-wondering
+and which  
+you were apparently  
+wondering  
 how we would solve
 
-Forgive me
-memes are hard
-so lazy
+Forgive me  
+memes are hard  
+so lazy  
 and so pure.
 
 
