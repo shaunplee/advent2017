@@ -1,16 +1,15 @@
 module Scanners where
 
 import           Data.List     (foldl', intercalate)
-import qualified Data.Vector   as V
 import           Text.Trifecta
 
-import           Debug.Trace
-
 type Layer = (Integer, Integer)
+
 layer :: Layer -> Integer
-layer (x, _) = x
+layer = fst
+
 range :: Layer -> Integer
-range (_, x) = x
+range = snd
 
 testInput = "0: 3\n1: 2\n4: 4\n6: 4"
 
