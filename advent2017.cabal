@@ -21,6 +21,7 @@ library
   hs-source-dirs:      src
   exposed-modules:     Checksum
                      , Circus
+                     , Defragment
                      , Hash
                      , Hex
                      , Passphrases
@@ -31,6 +32,7 @@ library
                      , Stream
   build-depends:       base >= 4.7 && < 5
                      , containers
+                     , digits
                      , heap
                      , split
                      , trifecta
